@@ -5,7 +5,7 @@ how requests move through each architectural layer.
 
 ## Create a project (admin, authenticated)
 
-![Create project sequence](../diagrams/create-project-sequence.png)
+![Create project sequence](../diagrams/project-sequence.png)
 
 1. **Admin submits form** — the admin dashboard sends
    `POST /api/projects` with the new project data and an
