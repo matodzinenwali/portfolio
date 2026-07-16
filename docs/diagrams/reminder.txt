@@ -1,1 +1,0 @@
-to upload erd.png deployment-diagram.png project-sequence.png
