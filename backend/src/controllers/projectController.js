@@ -18,7 +18,7 @@ export async function getProject(req, res, next) {
     }
 }
 
-export async function createProject(res, res, next) {
+export async function createProject(req, res, next) {
     try {
         const project = await projectService.createProject(req.body);
         res.status(201).json(project);

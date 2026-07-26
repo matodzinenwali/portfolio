@@ -1,4 +1,4 @@
-import Project from "../models/Project";
+import Project from "../models/Project.js";
 
 export async function findAll() {
     return Project.find().populate("skills").sort({ createdAt: -1 });
