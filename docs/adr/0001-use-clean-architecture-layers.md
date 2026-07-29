@@ -20,7 +20,7 @@ routes → controllers → services → repositories → (Mongoose/MongoDB)
 ```
 
 - **Routes** define URL paths and HTTP methods only.
-- **Controllers** parse requests and format responses — no business
+- **Controllers** parse requests and format responses, no business
   logic, no direct database calls.
 - **Services** contain business logic and validation rules.
 - **Repositories** are the only layer permitted to call Mongoose.
@@ -33,14 +33,14 @@ routes → controllers → services → repositories → (Mongoose/MongoDB)
 - The database library could be swapped later (e.g. MongoDB to
   PostgreSQL) by rewriting only the repository layer.
 - Each file has a single, clear responsibility, which makes the
-  codebase easier to navigate and reason about — useful both for
+  codebase easier to navigate and reason about, useful both for
   future maintenance and for explaining design decisions in an
   interview setting.
 
 **Negative:**
 - More files and more boilerplate per feature than a "everything in
   the route handler" approach.
-- Overkill for the smallest possible version of this project — but
+- Overkill for the smallest possible version of this project, but
   intentional here, since demonstrating the pattern correctly is
   itself part of the goal.
 
