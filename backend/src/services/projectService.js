@@ -15,7 +15,7 @@ export async function getProjectById(id) {
 }
 
 export async function createProject(data){
-    if(!data.title || data.description){
+    if(!data.title || !data.description){
         const error = new Error("Title and description are required");
         error.statusCode = 400;
         throw error;
