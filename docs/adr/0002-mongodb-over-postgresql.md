@@ -21,7 +21,7 @@ Mapper), with MongoDB Atlas as the hosted cluster.
   skill tags) maps naturally onto a single document, avoiding joins
   for what is conceptually one "thing".
 - Schema flexibility is useful while the content model is still
-  evolving early in the project — fields can be added to a Mongoose
+  evolving early in the project, fields can be added to a Mongoose
   schema without a formal migration step, unlike a relational schema
   change.
 - MongoDB Atlas's free tier (512MB) is more than sufficient for a
@@ -31,7 +31,7 @@ Mapper), with MongoDB Atlas as the hosted cluster.
 
 **Negative:**
 - No native support for enforced relational integrity (e.g. foreign
-  key constraints) — referential correctness between `Project` and
+  key constraints), referential correctness between `Project` and
   `Skill` has to be enforced at the application/service layer instead
   of the database layer.
 - Many-to-many relationships (Project–Skill) are less natural in a
