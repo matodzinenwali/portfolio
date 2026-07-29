@@ -21,7 +21,7 @@ controller.
 - Stateless: the API doesn't need to store session data anywhere
   (no session store, no server memory or Redis dependency), which
   keeps the Render deployment simple.
-- Works cleanly across the frontend/backend origin split — cookies
+- Works cleanly across the frontend/backend origin split. cookies
   and server-side sessions are more complex to configure correctly
   across separate hosts (Vercel + Render) due to cross-origin cookie
   restrictions.
@@ -30,11 +30,11 @@ controller.
 
 **Negative:**
 - Tokens can't be revoked before they expire without additional
-  infrastructure (e.g. a token blocklist) — acceptable here given
+  infrastructure (e.g. a token blocklist), acceptable here given
   there's a single admin user and short token expiry is used to
   limit exposure.
 - If the JWT secret were ever leaked, an attacker could forge valid
-  tokens — mitigated by keeping `JWT_SECRET` only in Render's
+  tokens, mitigated by keeping `JWT_SECRET` only in Render's
   environment variables, never committed to the repository.
 
 ## Alternatives considered
