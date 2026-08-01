@@ -1,0 +1,33 @@
+.avatar-frame {
+  flex-shrink: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  padding: 6px;
+  background: var(--bg-elevated);
+}
+
+.avatar-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
+.avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-terminal);
+  border: 1px dashed var(--border-strong);
+}
+
+.avatar-placeholder span {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--teal);
+  letter-spacing: 0.02em;
+}

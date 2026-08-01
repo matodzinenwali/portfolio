@@ -1,10 +1,44 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>frontend</title>
+    <meta name="theme-color" content="#0b0e14" />
+    <title>Matodzi Nenwali - Backend Developer</title>
+    <meta
+      name="description"
+      content="Portfolio of Matodzi Nenwali, a backend-leaning full-stack developer."
+    />
+
+    <!-- Open Graph / social + search link previews -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Matodzi Nenwali — Backend Developer" />
+    <meta
+      property="og:description"
+      content="Portfolio of Matodzi Nenwali, a backend-leaning full-stack developer."
+    />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Matodzi Nenwali — Backend Developer" />
+    <meta
+      name="twitter:description"
+      content="Portfolio of Matodzi Nenwali, a backend-leaning full-stack developer."
+    />
+    <meta name="twitter:image" content="/og-image.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script>
+      // Apply the saved theme before React mounts, so there's no
+      // flash of the wrong theme on load.
+      (function () {
+        var saved = localStorage.getItem('theme');
+        document.documentElement.setAttribute('data-theme', saved === 'light' ? 'light' : 'dark');
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

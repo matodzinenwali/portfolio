@@ -1,0 +1,29 @@
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+.theme-toggle:hover {
+  border-color: var(--border-strong);
+}
+
+.theme-toggle-flag {
+  color: var(--text-dim);
+}
+
+.theme-toggle-sep {
+  color: var(--border-strong);
+  margin: 0 2px;
+}
+
+.theme-toggle-active {
+  color: var(--violet);
+  font-weight: 600;
+}

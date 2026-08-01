@@ -1,0 +1,39 @@
+.status-state {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  padding: 20px 0;
+}
+
+.status-state--error {
+  color: var(--rose);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  flex-shrink: 0;
+}
+
+.status-dot--loading {
+  background: var(--amber);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.status-dot--error {
+  background: var(--rose);
+}
+
+.status-retry {
+  padding: 4px 12px;
+  font-size: 0.8rem;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
