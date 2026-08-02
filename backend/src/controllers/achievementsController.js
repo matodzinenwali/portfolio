@@ -20,7 +20,7 @@ export async function getAchievement(req, res, next){
 
 export async function createAchievement(req, res, next){
     try{
-        const achievement = await achievementsService.createAchievements(req.body);
+        const achievement = await achievementsService.createAchievements({...req.body, userId: req.userId});
         res.status(201).json(achievement);
     }catch(err){
         next(err);
