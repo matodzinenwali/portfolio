@@ -7,3 +7,5 @@ const SkillSchema = new mongoose.Schema(
     },
     { timestamps: true }
 );
+
+export default mongoose.model("Skill", SkillSchema);
