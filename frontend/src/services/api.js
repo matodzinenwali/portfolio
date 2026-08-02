@@ -45,4 +45,9 @@ export async function getAbout() {
   return data;
 }
 
+export async function updateAbout(payload) {
+  const { data } = await api.put('/about', payload);
+  return data;
+}
+
 export default api;

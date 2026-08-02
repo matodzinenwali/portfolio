@@ -1,0 +1,55 @@
+.about-manager {
+  max-width: 480px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.about-manager-field {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.about-manager-field span {
+  display: block;
+  font-size: 0.76rem;
+  color: var(--text-dim);
+  margin-bottom: 5px;
+}
+
+.about-manager-field input,
+.about-manager-field textarea {
+  width: 100%;
+  padding: 9px 11px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.9rem;
+  resize: vertical;
+}
+
+.about-manager-field input:focus,
+.about-manager-field textarea:focus {
+  outline: none;
+  border-color: var(--violet);
+}
+
+.about-manager-error {
+  color: var(--rose);
+  font-size: 0.8rem;
+  margin: 0 0 14px 0;
+}
+
+.about-manager-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.about-manager-saved {
+  color: var(--teal);
+  font-size: 0.82rem;
+}

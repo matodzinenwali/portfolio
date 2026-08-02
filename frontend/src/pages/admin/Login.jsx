@@ -21,7 +21,7 @@ export default function Login() {
       setAuthToken(token);
       login(token);
       navigate('/admin');
-    } catch {
+    } catch (err) {
       setError('Login failed. Check your email and password.');
     } finally {
       setSubmitting(false);

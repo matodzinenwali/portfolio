@@ -3,9 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { setAuthToken, projectsApi, skillsApi, achievementsApi } from '../../services/api';
 import ResourceManager from '../../components/ResourceManager';
+import AboutManager from '../../components/AboutManager';
 import './Dashboard.css';
 
 const TABS = {
+  about: {
+    label: 'about',
+    singleton: true, // renders AboutManager instead of ResourceManager
+  },
   projects: {
     label: 'projects',
     api: projectsApi,
@@ -42,7 +47,7 @@ const TABS = {
 };
 
 export default function Dashboard() {
-  const [activeTab, setActiveTab] = useState('projects');
+  const [activeTab, setActiveTab] = useState('about');
   const { logout } = useAuth();
   const navigate = useNavigate();
 
@@ -78,12 +83,16 @@ export default function Dashboard() {
         ))}
       </div>
 
-      <ResourceManager
-        resourceApi={tab.api}
-        fields={tab.fields}
-        titleField={tab.titleField}
-        key={activeTab}
-      />
+      {tab.singleton ? (
+        <AboutManager />
+      ) : (
+        <ResourceManager
+          resourceApi={tab.api}
+          fields={tab.fields}
+          titleField={tab.titleField}
+          key={activeTab}
+        />
+      )}
     </section>
   );
 }
