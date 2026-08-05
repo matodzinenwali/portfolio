@@ -8,9 +8,11 @@ import skillRoutes from "./routes/skillRoutes.js";
 
 const app = express();
 
+// Global configuration: Parses incoming JSON bodies for all routes
 app.use(cors());
 app.use(express.json());
 
+// Mount the router onto a specific path prefix
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/achievements', achievementsRoutes);

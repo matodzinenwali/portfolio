@@ -6,6 +6,8 @@ const router = Router();
 
 router.get("/:id", getSkill);
 router.get("/", getSkills);
+
+//authorization is required to access this routes
 router.put("/", requireAuth, createSkill);
 
 export default router;

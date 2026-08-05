@@ -6,6 +6,8 @@ const router = Router();
 
 router.get("/", getAchievements);
 router.get("/:id", getAchievement);
+
+//authorization is required to access this routes
 router.post("/", requireAuth, createAchievement);
 
 export default router;
