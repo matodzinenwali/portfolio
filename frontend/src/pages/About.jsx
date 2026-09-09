@@ -7,7 +7,7 @@ import './About.css';
 
 export default function About() {
   const fetchAbout = useCallback(() => getAbout(), []);
-  const { data, status, refetch } = useFetch(fetchAbout, []);
+  const { data, status, refetch } = useFetch(fetchAbout);
 
   return (
     <section className="container about-page">

@@ -8,7 +8,7 @@ const emptyValues = (fields) =>
 
 export default function ResourceManager({ resourceApi, fields, titleField = 'title' }) {
   const fetchAll = useCallback(() => resourceApi.getAll(), [resourceApi]);
-  const { data, status, refetch } = useFetch(fetchAll, [resourceApi]);
+  const { data, status, refetch } = useFetch(fetchAll);
   const [form, setForm] = useState(() => emptyValues(fields));
   const [submitting, setSubmitting] = useState(false);
   const [formError, setFormError] = useState(null);
@@ -25,7 +25,7 @@ export default function ResourceManager({ resourceApi, fields, titleField = 'tit
       await resourceApi.create(form);
       setForm(emptyValues(fields));
       refetch();
-    } catch (err) {
+    } catch {
       setFormError('Could not save. Check required fields and try again.');
     } finally {
       setSubmitting(false);
@@ -34,8 +34,13 @@ export default function ResourceManager({ resourceApi, fields, titleField = 'tit
 
   async function handleDelete(id) {
     if (!window.confirm('Delete this item?')) return;
-    await resourceApi.remove(id);
-    refetch();
+    setFormError(null);
+    try {
+      await resourceApi.remove(id);
+      refetch();
+    } catch {
+      setFormError('Could not delete this item. Please try again later.');
+    }
   }
 
   return (

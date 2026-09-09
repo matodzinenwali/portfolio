@@ -7,7 +7,7 @@ import './Projects.css';
 
 export default function Projects() {
   const fetchProjects = useCallback(() => projectsApi.getAll(), []);
-  const { data, status, refetch } = useFetch(fetchProjects, []);
+  const { data, status, refetch } = useFetch(fetchProjects);
 
   return (
     <section className="container projects-page">

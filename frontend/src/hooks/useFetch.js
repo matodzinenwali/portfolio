@@ -1,31 +1,42 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 
-export function useFetch(fetchFn, deps = []) {
+export function useFetch(fetchFn) {
   const [data, setData] = useState(null);
   const [status, setStatus] = useState('loading'); // 'loading' | 'success' | 'error'
   const [error, setError] = useState(null);
 
-  const load = useCallback(() => {
+  const [revision, setRevision] = useState(0);
+  const requestId = useRef(0);
+
+  const refetch = useCallback(() => {
+    requestId.current += 1;
+    setRevision((value) => value + 1);
+  }, []);
+
+  useEffect(() => {
     let cancelled = false;
-    setStatus('loading');
-    fetchFn()
+    const currentRequest = ++requestId.current;
+    Promise.resolve()
+      .then(() => {
+        if (cancelled || currentRequest !== requestId.current) return;
+        setStatus('loading');
+        setError(null);
+        return fetchFn();
+      })
       .then((result) => {
-        if (cancelled) return;
+        if (cancelled || currentRequest !== requestId.current) return;
         setData(result);
         setStatus('success');
       })
       .catch((err) => {
-        if (cancelled) return;
+        if (cancelled || currentRequest !== requestId.current) return;
         setError(err);
         setStatus('error');
       });
     return () => {
       cancelled = true;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps);
+  }, [fetchFn, revision]);
 
-  useEffect(() => load(), [load]);
-
-  return { data, status, error, refetch: load };
+  return { data, status, error, refetch };
 }

@@ -1,7 +1,7 @@
 import './AchievementCard.css';
 
 export default function AchievementCard({ achievement }) {
-  const { title, issuer, type, dateAwarded, credentialUrl, description } = achievement;
+  const { title, issuer, type, dateAwarded, credentialURL: credentialUrl, description } = achievement;
   const isAward = type === 'award';
 
   return (

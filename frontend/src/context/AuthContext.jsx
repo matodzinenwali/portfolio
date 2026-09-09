@@ -1,6 +1,5 @@
-import { createContext, useContext, useState } from 'react';
-
-const AuthContext = createContext(null);
+import { useState } from 'react';
+import { AuthContext } from './auth-context';
 
 export function AuthProvider({ children }) {
   // Kept in memory only, per the security note in the project brief.
@@ -22,10 +21,4 @@ export function AuthProvider({ children }) {
       {children}
     </AuthContext.Provider>
   );
-}
-
-export function useAuth() {
-  const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error('useAuth must be used within an AuthProvider');
-  return ctx;
 }

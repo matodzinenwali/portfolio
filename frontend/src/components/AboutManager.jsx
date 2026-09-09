@@ -1,27 +1,31 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { getAbout, updateAbout } from '../services/api';
 import { useFetch } from '../hooks/useFetch';
 import { LoadingState, ErrorState } from './StatusState';
 import './AboutManager.css';
 
-export default function AboutManager() {
-  const fetchAbout = useCallback(() => getAbout().catch(() => ({ bio: '', photoUrl: '' })), []);
-  const { data, status, refetch } = useFetch(fetchAbout, []);
+async function fetchAbout() {
+  try {
+    return await getAbout();
+  } catch (err) {
+    if (err.response?.status === 404) return { bio: '', photoUrl: '' };
+    throw err;
+  }
+}
 
-  const [bio, setBio] = useState('');
-  const [photoUrl, setPhotoUrl] = useState('');
+export default function AboutManager() {
+  const { data, status, refetch } = useFetch(fetchAbout);
+  if (status === 'loading') return <LoadingState label="loading about.md" />;
+  if (status === 'error') return <ErrorState message="Couldn't load About." onRetry={refetch} />;
+  return <AboutForm about={data} />;
+}
+
+function AboutForm({ about }) {
+  const [bio, setBio] = useState(about?.bio || '');
+  const [photoUrl, setPhotoUrl] = useState(about?.photoUrl || '');
   const [submitting, setSubmitting] = useState(false);
   const [saved, setSaved] = useState(false);
   const [formError, setFormError] = useState(null);
-
-  // Pre-fill the form once the current About data has loaded, so editing
-  // updates what's there instead of starting blank every time.
-  useEffect(() => {
-    if (status === 'success' && data) {
-      setBio(data.bio || '');
-      setPhotoUrl(data.photoUrl || '');
-    }
-  }, [status, data]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -31,16 +35,12 @@ export default function AboutManager() {
     try {
       await updateAbout({ bio, photoUrl });
       setSaved(true);
-      refetch();
-    } catch (err) {
+    } catch {
       setFormError('Could not save. Bio is required.');
     } finally {
       setSubmitting(false);
     }
   }
-
-  if (status === 'loading') return <LoadingState label="loading about.md" />;
-  if (status === 'error') return <ErrorState message="Couldn't load About." onRetry={refetch} />;
 
   return (
     <form className="about-manager" onSubmit={handleSubmit}>

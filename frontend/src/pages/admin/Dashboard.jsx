@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../context/auth-context';
 import { setAuthToken, projectsApi, skillsApi, achievementsApi } from '../../services/api';
 import ResourceManager from '../../components/ResourceManager';
 import AboutManager from '../../components/AboutManager';
@@ -40,7 +40,7 @@ const TABS = {
       { name: 'issuer', label: 'issuer', required: true },
       { name: 'type', label: 'type', type: 'select', options: ['award', 'certification'] },
       { name: 'dateAwarded', label: 'date awarded', type: 'date' },
-      { name: 'credentialUrl', label: 'credential url' },
+      { name: 'credentialURL', label: 'credential url' },
       { name: 'description', label: 'description', type: 'textarea' },
     ],
   },

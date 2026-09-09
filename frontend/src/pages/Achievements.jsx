@@ -7,7 +7,7 @@ import './Achievements.css';
 
 export default function Achievements() {
   const fetchAchievements = useCallback(() => achievementsApi.getAll(), []);
-  const { data, status, refetch } = useFetch(fetchAchievements, []);
+  const { data, status, refetch } = useFetch(fetchAchievements);
 
   return (
     <section className="container achievements-page">

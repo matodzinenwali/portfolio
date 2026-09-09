@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login as loginRequest, setAuthToken } from '../../services/api';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../context/auth-context';
 import './Login.css';
 
 export default function Login() {
@@ -21,7 +21,7 @@ export default function Login() {
       setAuthToken(token);
       login(token);
       navigate('/admin');
-    } catch (err) {
+    } catch {
       setError('Login failed. Check your email and password.');
     } finally {
       setSubmitting(false);
