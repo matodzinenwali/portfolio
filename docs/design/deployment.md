@@ -1,5 +1,9 @@
 # Deployment Model
 
+For current executable configuration and account setup, follow [Deployment setup](../deployment-setup.md).
+The current production branch is `master`. The diagram below is the original target
+architecture: Cloudinary uploads are not implemented; forms currently accept image URLs.
+
 ![Deployment diagram](../diagrams/deployment-diagram.png)
 
 ## Overview
@@ -12,8 +16,8 @@ to the logical architecture described in [architecture.md](./architecture.md).
 
 | Component | Host | Notes |
 |---|---|---|
-| React frontend | Vercel | Static build served from Vercel's edge network. Auto-deploys on push to `main`. |
-| Express API | Render | Node.js web service container. Auto-deploys on push to `main`. |
+| React frontend | Vercel | Static build served from Vercel's edge network. Production branch: `master`. |
+| Express API | Render | Node.js web service. Deploys from `master` after CI passes. |
 | Database | MongoDB Atlas | Cloud-hosted cluster (replica set), free tier. |
 | Images | Cloudinary | Media CDN for uploaded project/profile images. |
 
