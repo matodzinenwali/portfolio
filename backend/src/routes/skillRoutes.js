@@ -8,6 +8,6 @@ router.get("/:id", getSkill);
 router.get("/", getSkills);
 
 //authorization is required to access this routes
-router.put("/", requireAuth, createSkill);
+router.post("/", requireAuth, createSkill);
 
 export default router;

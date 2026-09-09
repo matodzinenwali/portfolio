@@ -11,7 +11,6 @@ export async function getAbout(req, res, next){
 
 export async function updateAbout(req, res, next){
     try{
-        console.log('req.body:', req.body); // temporary
         const about = await aboutService.updateAbout(req.body);
         res.status(200).json(about);
     }catch(err){

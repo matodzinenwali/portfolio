@@ -5,7 +5,7 @@ export async function getAllSkills() {
 }
 
 export async function getSkillById(id) {
-    const skill = await skillRepository.getSkillById(id);
+    const skill = await skillRepository.findById(id);
     if (!skill) {
         const error = new Error("Skill not found");
         error.statusCode = 404;
