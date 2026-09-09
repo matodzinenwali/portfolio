@@ -1,9 +1,10 @@
-cat > .gitignore << 'EOF'
 node_modules/
 .env
 .env.local
+.env.*
+!.env.example
+.vercel/
 dist/
 build/
 .DS_Store
 *.log
-EOF

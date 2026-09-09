@@ -1,5 +1,13 @@
 # Portfolio
 
+## Review, CI and deployment
+
+- [Code review and remaining improvements](docs/code-review.md)
+- [Deploy the frontend to Vercel and API to Render](docs/deployment-setup.md)
+- GitHub Actions checks frontend lint/build and backend regression tests on pull requests and pushes to `master` or `main`.
+- Use Node 24 (`.nvmrc`). Validate locally with `npm --prefix frontend run lint`, `npm --prefix frontend run build`, and `npm --prefix backend test`.
+
+
 Full-stack dynamic portfolio with a React frontend, Express/MongoDB backend, and an admin dashboard for editing content without touching code.
 
 ## Structure
