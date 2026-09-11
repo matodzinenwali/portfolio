@@ -4,8 +4,8 @@
 Full-stack dynamic portfolio with a React frontend, Express/MongoDB backend, and an admin dashboard for editing content without touching code.
 
 ## Structure
-- /frontend — React (Vite)
-- /backend — Express REST API, clean architecture (routes → controllers → services → repositories)
+- /frontend - React (Vite)
+- /backend - Express REST API, clean architecture (routes → controllers → services → repositories)
 
 ## Local setup
 1. `cd backend && npm install && cp .env.example .env`
